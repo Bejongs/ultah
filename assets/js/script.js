@@ -5,8 +5,7 @@ const closeModal2 = document.getElementById("closeModal2");
 const capsuleModal = document.getElementById("capsuleModal");
 const openCapsule = document.getElementById("openCapsule");
 const closeCapsule = document.getElementById("closeCapsule");
-const capsulePrev = document.getElementById("capsulePrev");
-const capsuleNext = document.getElementById("capsuleNext");
+const capsulePhoto = document.querySelector(".capsule-photo");
 
 const toggleMusicBtn = document.getElementById("toggleMusic");
 const bgMusic = document.getElementById("bgMusic");
@@ -66,20 +65,50 @@ function showCapsuleFrame(index, direction) {
 
 if (capsuleFrames.length) {
   showCapsuleFrame(capsuleIndex);
+}
 
-  if (capsulePrev) {
-    capsulePrev.addEventListener("click", () => {
-      capsuleIndex = (capsuleIndex - 1 + capsuleFrames.length) % capsuleFrames.length;
-      showCapsuleFrame(capsuleIndex, "slide-prev");
-    });
-  }
+function goCapsulePrev() {
+  capsuleIndex = (capsuleIndex - 1 + capsuleFrames.length) % capsuleFrames.length;
+  showCapsuleFrame(capsuleIndex, "slide-prev");
+}
 
-  if (capsuleNext) {
-    capsuleNext.addEventListener("click", () => {
-      capsuleIndex = (capsuleIndex + 1) % capsuleFrames.length;
-      showCapsuleFrame(capsuleIndex, "slide-next");
-    });
-  }
+function goCapsuleNext() {
+  capsuleIndex = (capsuleIndex + 1) % capsuleFrames.length;
+  showCapsuleFrame(capsuleIndex, "slide-next");
+}
+
+if (capsulePhoto && capsuleFrames.length) {
+  let startX = 0;
+  let startY = 0;
+  let isSwiping = false;
+  const threshold = 40;
+
+  capsulePhoto.addEventListener("touchstart", (e) => {
+    const touch = e.changedTouches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isSwiping = false;
+  }, { passive: true });
+
+  capsulePhoto.addEventListener("touchmove", (e) => {
+    const touch = e.changedTouches[0];
+    const deltaX = Math.abs(touch.clientX - startX);
+    const deltaY = Math.abs(touch.clientY - startY);
+    if (deltaX > deltaY && deltaX > 10) {
+      isSwiping = true;
+    }
+  }, { passive: true });
+
+  capsulePhoto.addEventListener("touchend", (e) => {
+    const touch = e.changedTouches[0];
+    const diffX = touch.clientX - startX;
+    if (!isSwiping || Math.abs(diffX) < threshold) return;
+    if (diffX < 0) {
+      goCapsuleNext();
+    } else {
+      goCapsulePrev();
+    }
+  }, { passive: true });
 }
 
 // Music toggle
