@@ -213,8 +213,6 @@ h1{
 
 .capsule-photo{
   margin-top: 12px;
-  max-height: 50vh;
-  overflow: hidden;
   position: relative;
 }
 
@@ -270,8 +268,8 @@ h1{
 
 .capsule-frame img{
   width: 100%;
-  max-height: 50vh;
-  object-fit: cover;
+  max-height: 360px;
+  object-fit: contain;
   border-radius: 8px;
   border: 1px solid rgba(0,0,0,0.08);
 }
