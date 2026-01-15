@@ -231,8 +231,8 @@ h1{
 
 .capsule-nav{
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translateY(-50%);
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -248,11 +248,11 @@ h1{
   backdrop-filter: blur(8px);
 }
 
-.capsule-nav.left{ top: 6px; }
-.capsule-nav.right{ bottom: 6px; }
+.capsule-nav.left{ left: 6px; }
+.capsule-nav.right{ right: 6px; }
 
 .capsule-nav:active{
-  transform: translateX(-50%) scale(0.96);
+  transform: translateY(-50%) scale(0.96);
 }
 
 .capsule-frame.active{
