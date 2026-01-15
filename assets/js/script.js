@@ -108,12 +108,22 @@ async function handleMusicToggle() {
 }
 
 if (toggleMusicBtn && bgMusic) {
-  toggleMusicBtn.addEventListener("click", handleMusicToggle);
+  let touchActivated = false;
+
+  toggleMusicBtn.addEventListener("click", () => {
+    if (touchActivated) return;
+    handleMusicToggle();
+  });
+
   toggleMusicBtn.addEventListener(
     "touchstart",
     (e) => {
       e.preventDefault();
+      touchActivated = true;
       handleMusicToggle();
+      setTimeout(() => {
+        touchActivated = false;
+      }, 400);
     },
     { passive: false }
   );
