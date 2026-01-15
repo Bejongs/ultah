@@ -83,6 +83,8 @@ h1{
   gap: 10px;
   flex-wrap: wrap;
   margin: 10px 0 22px;
+  position: relative;
+  z-index: 1;
 }
 
 .music-controls{

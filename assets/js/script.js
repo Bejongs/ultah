@@ -88,21 +88,40 @@ if (capsuleNext && capsuleFrames.length) {
 }
 
 // Music toggle
-toggleMusicBtn.addEventListener("click", async () => {
+async function handleMusicToggle() {
   try {
     if (!musicPlaying) {
+      if (bgMusic.readyState === 0) {
+        bgMusic.load();
+      }
       await bgMusic.play();
       musicPlaying = true;
-      toggleMusicBtn.textContent = "⏸ Pause Musik";
+      toggleMusicBtn.textContent = "? Pause Musik";
     } else {
       bgMusic.pause();
       musicPlaying = false;
-      toggleMusicBtn.textContent = "🎶 Putar Musik";
+      toggleMusicBtn.textContent = "?? Putar Musik";
     }
   } catch (err) {
-    alert("Autoplay diblokir browser. Klik tombol musik sekali lagi ya 🙏");
+    alert("Autoplay diblokir browser. Klik tombol musik sekali lagi ya ??");
   }
-});
+}
+
+if (toggleMusicBtn && bgMusic) {
+  toggleMusicBtn.addEventListener("click", handleMusicToggle);
+  toggleMusicBtn.addEventListener(
+    "touchstart",
+    (e) => {
+      e.preventDefault();
+      handleMusicToggle();
+    },
+    { passive: false }
+  );
+
+  bgMusic.addEventListener("error", () => {
+    alert("File musik tidak bisa diputar. Cek nama file di folder assets/music.");
+  });
+}
 
 if (musicSlider) {
   let isScrubbing = false;
@@ -250,5 +269,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast(msg);
   });
 });
+
 
 
