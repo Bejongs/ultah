@@ -96,11 +96,11 @@ async function handleMusicToggle() {
       }
       await bgMusic.play();
       musicPlaying = true;
-      toggleMusicBtn.textContent = "? Pause Musik";
+      toggleMusicBtn.textContent = "⏸️ Pause Musik";
     } else {
       bgMusic.pause();
       musicPlaying = false;
-      toggleMusicBtn.textContent = "?? Putar Musik";
+      toggleMusicBtn.textContent = "▶️ Putar Musik";
     }
   } catch (err) {
     alert("Autoplay diblokir browser. Klik tombol musik sekali lagi ya ??");
