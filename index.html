@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Happy Birthday ❤️</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Musik -->
+  <audio id="bgMusic" loop>
+    <source src="assets/music/lagu.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Glow background -->
+  <div class="bg-glow"></div>
+
+  <!-- Floating hearts -->
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Main -->
+  <main class="container">
+    <section class="card">
+      <p class="badge">🎂 Special Day</p>
+
+      <h1>
+        Happy Birthday,<br />
+        <span class="name">Sayangku ❤️</span>
+      </h1>
+
+      <p class="subtitle">
+        Hari ini hari spesial kamu. Aku cuma mau bilang:
+        <b>makasih udah hadir di hidup aku</b>.
+      </p>
+
+      <div class="cta">
+        <button class="btn" id="openLetter">💌 Buka Surat</button>
+        <button class="btn ghost" id="toggleMusic">🎶 Putar Musik</button>
+        <button class="btn ghost" id="randomMsg">💞 Klik Aku</button>
+      </div>
+      <div class="music-controls">
+        <input
+          type="range"
+          id="musicSlider"
+          min="0"
+          max="100"
+          value="0"
+          step="1"
+          aria-label="Pengatur durasi musik"
+        />
+        <div class="music-time">
+          <span id="musicCurrent">0:00</span>
+          <span id="musicDuration">0:00</span>
+        </div>
+      </div>
+
+
+      <!-- Gallery removed: photos only in capsule -->
+      <div class="capsule">
+        <div class="capsule-head">
+          <h3>Capsule Waktu</h3>
+          <p class="capsule-sub">Simpan momen kita untuk dibuka di masa depan.</p>
+        </div>
+        <button class="btn ghost" id="openCapsule">Buka Capsule</button>
+      </div>
+
+      <p class="footer">
+        Dibuat khusus untuk kamu ✨ <br />
+        <small>— dari aku yang selalu sayang kamu</small>
+      </p>
+    </section>
+  </main>
+
+  <!-- Modal surat -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <button class="close" id="closeModal">✖</button>
+
+      <h2>💌 Surat untuk kamu</h2>
+
+      <p>
+        Sayangku,<br /><br />
+        Selamat ulang tahun ya ❤️
+        Semoga semua hal baik selalu datang ke kamu.
+        Semoga kamu selalu sehat, bahagia, dan semua impian kamu tercapai.
+        Aku bangga banget sama kamu.<br /><br />
+
+        Makasih udah jadi orang yang selalu bikin hari-hari aku lebih berwarna.
+        Tetap sama aku ya… aku mau nemenin kamu terus 🤍<br /><br />
+
+        I love you, today and always.
+      </p>
+
+      <div class="modal-actions">
+        <button class="btn" id="confetti">🎉 Surprise</button>
+        <button class="btn ghost" id="closeModal2">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Modal capsule waktu -->
+  <div class="modal" id="capsuleModal">
+    <div class="modal-box">
+      <button class="close" id="closeCapsule">x</button>
+
+      <h2>Capsule Waktu</h2>
+      <p>Foto kecil dari hari ini, buat kamu di masa depan.</p>
+
+      <div class="capsule-photo">
+        <div class="capsule-frame active">
+          <img src="assets/img/foto1.jpeg" alt="Foto capsule 1" />
+          <div class="polaroid-caption">Favorite ku</div>
+        </div>
+        <div class="capsule-frame">
+          <img src="assets/img/foto2.jpeg" alt="Foto capsule 2" />
+          <div class="polaroid-caption">Imut Bangett</div>
+        </div>
+        <div class="capsule-frame">
+          <img src="assets/img/foto3.jpeg" alt="Foto capsule 3" />
+          <div class="polaroid-caption">Always</div>
+        </div>
+      </div>
+      <div class="capsule-controls">
+        <button class="btn ghost" id="capsulePrev">Sebelumnya</button>
+        <button class="btn ghost" id="capsuleNext">Berikutnya</button>
+      </div>
+    </div>
+  </div>
+  <!-- Toast message -->
+  <div class="toast" id="toast">
+      <div class="toast-box">
+          <div class="toast-title">💞 Untuk kamu...</div>
+          <div class="toast-text" id="toastText">Pesan tampil di sini</div>
+      </div>
+  </div>
+
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
+
+
