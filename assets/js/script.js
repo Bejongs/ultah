@@ -6,6 +6,8 @@ const capsuleModal = document.getElementById("capsuleModal");
 const openCapsule = document.getElementById("openCapsule");
 const closeCapsule = document.getElementById("closeCapsule");
 const capsulePhoto = document.querySelector(".capsule-photo");
+const capsulePrev = document.getElementById("capsulePrev");
+const capsuleNext = document.getElementById("capsuleNext");
 
 const toggleMusicBtn = document.getElementById("toggleMusic");
 const bgMusic = document.getElementById("bgMusic");
@@ -77,38 +79,12 @@ function goCapsuleNext() {
   showCapsuleFrame(capsuleIndex, "slide-next");
 }
 
-if (capsulePhoto && capsuleFrames.length) {
-  let startX = 0;
-  let startY = 0;
-  let isSwiping = false;
-  const threshold = 40;
+if (capsulePrev && capsuleFrames.length) {
+  capsulePrev.addEventListener("click", goCapsulePrev);
+}
 
-  capsulePhoto.addEventListener("touchstart", (e) => {
-    const touch = e.changedTouches[0];
-    startX = touch.clientX;
-    startY = touch.clientY;
-    isSwiping = false;
-  }, { passive: true });
-
-  capsulePhoto.addEventListener("touchmove", (e) => {
-    const touch = e.changedTouches[0];
-    const deltaX = Math.abs(touch.clientX - startX);
-    const deltaY = Math.abs(touch.clientY - startY);
-    if (deltaX > deltaY && deltaX > 10) {
-      isSwiping = true;
-    }
-  }, { passive: true });
-
-  capsulePhoto.addEventListener("touchend", (e) => {
-    const touch = e.changedTouches[0];
-    const diffX = touch.clientX - startX;
-    if (!isSwiping || Math.abs(diffX) < threshold) return;
-    if (diffX < 0) {
-      goCapsuleNext();
-    } else {
-      goCapsulePrev();
-    }
-  }, { passive: true });
+if (capsuleNext && capsuleFrames.length) {
+  capsuleNext.addEventListener("click", goCapsuleNext);
 }
 
 // Music toggle
